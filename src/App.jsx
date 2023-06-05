@@ -1,14 +1,16 @@
 // import { useState } from 'react'
-import { GlobalStyle } from "./styles";
+import { GlobalStyle, StyledGlobalWrapper } from "./styles";
+import { Home } from "./pages";
 
 function App() {
 
   return (
     <div className="App">
       <GlobalStyle />
-      <h1>
-        HelloWorld!!!
-      </h1>
+
+      <StyledGlobalWrapper>
+        <Home />
+      </StyledGlobalWrapper>
     </div>
   );
 }
