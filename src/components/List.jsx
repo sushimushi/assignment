@@ -11,7 +11,7 @@ function List({ data, id }) {
     setList(data);
   }, [data]);
   return (
-    <StyledCard>
+    <StyledCard className="overflow-auto">
       <StyledInput placeholder="Search"
         type="text"
         value={filter}

@@ -6,7 +6,7 @@ const StyledGlobalWrapper = styled.div`
     margin-inline:auto;
     height:100vh;
     display: grid;
-    align-items: center;
+    place-items: center;
 `;
 
 export default StyledGlobalWrapper;

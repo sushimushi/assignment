@@ -63,30 +63,32 @@ function TreeComponent({ data }) {
     <StyledCard>
 
       <h2>Employee Organization Chart</h2>
-      <div className="ceoBlock">
-        {ceo && <ListItems data={ceo} isDragable={false} />}
-      </div>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <StyledGrid style={{ display: "flex" }} className="managerBlock">
-          {state.map((el, ind) => (
-            <div key={ind} style={{ 'padding-top': '20px', height: 'auto', overflow: 'visible' }}>
-              <div className="managerCell">
-                <ListItems data={el} isDragable={false} />
+      <div className="overflow-auto">
+        <div className="ceoBlock">
+          {ceo && <ListItems data={ceo} isDragable={false} />}
+        </div>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <StyledGrid style={{ display: "flex" }} className="managerBlock">
+            {state.map((el, ind) => (
+              <div key={ind} style={{ 'padding-top': '20px', height: 'auto', overflow: 'visible' }}>
+                <div className="managerCell">
+                  <ListItems data={el} isDragable={false} />
+                </div>
+                <Droppable droppableId={`${ind}`}>
+                  {(provided, snapshot) => (
+                    <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver, el.team.length)}{...provided.droppableProps}>
+                      {el.team.map((item, index) => (
+                        <ListItems className="team__members" data={item} isDragable={true} key={item.id} index={index} />
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
               </div>
-              <Droppable droppableId={`${ind}`}>
-                {(provided, snapshot) => (
-                  <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver, el.team.length)}{...provided.droppableProps}>
-                    {el.team.map((item, index) => (
-                      <ListItems className="team__members" data={item} isDragable={true} key={item.id} index={index} />
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </div>
-          ))}
-        </StyledGrid>
-      </DragDropContext>
+            ))}
+          </StyledGrid>
+        </DragDropContext>
+      </div>
     </StyledCard >
   );
 }

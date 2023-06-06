@@ -34,14 +34,14 @@ const list = [{
     managerId: '1',
     img: '/src/assets/003.png'
 },
-// {
-//     id: '4',
-//     name: "Jhon Green",
-//     designation: "Chief Business Officer",
-//     team: "Database",
-//     managerId: '1',
-//     img: '/src/assets/004.png'
-// },
+{
+    id: '4',
+    name: "Jhon Green",
+    designation: "Chief Business Officer",
+    team: "Database",
+    managerId: '1',
+    img: '/src/assets/004.png'
+},
 {
     id: '5',
     name: "Ron Blonquist",
