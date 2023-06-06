@@ -15,7 +15,7 @@ const list = [{
     designation: "Chief Executive Officer",
     team: "",
     managerId: "",
-    img: '/src/assets/001.png'
+    img: '/public/assets/001.png'
 },
 {
     id: '2',
@@ -23,7 +23,7 @@ const list = [{
     designation: "Chief Business Officer",
     team: "Database",
     managerId: '1',
-    img: '/src/assets/002.png'
+    img: '/public/assets/002.png'
 },
 
 {
@@ -32,7 +32,7 @@ const list = [{
     designation: "Chief Technology Officer",
     team: "Branch",
     managerId: '1',
-    img: '/src/assets/003.png'
+    img: '/public/assets/003.png'
 },
 {
     id: '4',
@@ -40,7 +40,7 @@ const list = [{
     designation: "Chief Business Officer",
     team: "Database",
     managerId: '1',
-    img: '/src/assets/004.png'
+    img: '/public/assets/004.png'
 },
 {
     id: '5',
@@ -48,7 +48,7 @@ const list = [{
     designation: "Chief Business Officer",
     team: "Database",
     managerId: '2',
-    img: '/src/assets/005.png'
+    img: '/public/assets/005.png'
 },
 {
     id: '6',
@@ -56,7 +56,7 @@ const list = [{
     designation: "Chief Business Officer",
     team: "Database",
     managerId: '2',
-    img: '/src/assets/008.png'
+    img: '/public/assets/008.png'
 },
 {
     id: '7',
@@ -64,7 +64,7 @@ const list = [{
     designation: "Chief Business Officer",
     team: "Database",
     managerId: '3',
-    img: '/src/assets/006.png'
+    img: '/public/assets/006.png'
 },
 {
     id: '8',
@@ -72,7 +72,7 @@ const list = [{
     designation: "Chief Business Officer",
     team: "Database",
     managerId: '3',
-    img: '/src/assets/009.png'
+    img: '/public/assets/009.png'
 },
 {
     id: '9',
@@ -80,7 +80,7 @@ const list = [{
     designation: "Chief Business Development Officer",
     team: "Database",
     managerId: '3',
-    img: '/src/assets/010.png'
+    img: '/public/assets/010.png'
 },
 {
     id: '10',
@@ -88,5 +88,5 @@ const list = [{
     designation: "Chief Customer Officer",
     team: "Database",
     managerId: '4',
-    img: '/src/assets/007.png'
+    img: '/public/assets/007.png'
 }];
