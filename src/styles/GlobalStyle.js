@@ -73,6 +73,9 @@ const GlobalStyle = createGlobalStyle`
     white-space: nowrap;
     border: 0;
   }
+  .pull-right{
+    float: right;
+  }
   .overflow-ellipsis {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -112,12 +115,11 @@ const GlobalStyle = createGlobalStyle`
   }
   @media (min-width: 768px){
     .grid{
-    margin-left: min(10rem, 100%);
-    & > div{
-      padding-left:20px;
+      margin-left: min(10rem, 100%);
+      & > div{
+        padding-left:20px;
+      }
     }
-  }
-    
   }
 `;
 

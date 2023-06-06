@@ -1,41 +1,3 @@
-import { useState } from "react";
-
-// fake data generator;
-export const getItems = (count, offset = 0) => {
-
-  const list = [{
-    id: 1,
-    name: "Mark Hill",
-    designation: "Chief Executive Officer",
-    team: "",
-    managerId: "",
-    img: '/src/assets/001.png'
-  },
-  {
-    id: 2,
-    name: "Joe Linux",
-    designation: "Chief Business Officer",
-    team: "Database",
-    managerId: "102",
-    img: '/src/assets/002.png'
-  },
-  {
-    id: 3,
-    name: "Linda May",
-    designation: "Chief Technology Officer",
-    team: "Branch",
-    managerId: "",
-    img: '/src/assets/003.png'
-  }];
-
-  return list.map((item, k) => ({
-    ...item,
-    id: `item-${k + offset}-${new Date().getTime()}`,
-  }));
-
-};
-
-
 export const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -49,63 +11,41 @@ export const reorder = (list, startIndex, endIndex) => {
  * Moves an item from one list to another list.
  */
 export const move = (source, destination, droppableSource, droppableDestination) => {
-  const sourceClone = Array.from(source);
-  const destClone = Array.from(destination);
-  const [removed] = sourceClone.splice(droppableSource.index, 1);
 
-  destClone.splice(droppableDestination.index, 0, removed);
+  let newSourceTeam = Array.from(source.team);
+  let newDestinationTeam = Array.from(destination.team);
 
-  const result = {};
-  result[droppableSource.droppableId] = sourceClone;
-  result[droppableDestination.droppableId] = destClone;
+  const [removed] = newSourceTeam.splice(droppableSource, 1);
+  removed.managerId = destination.id;
+  newDestinationTeam.splice(droppableDestination, 0, removed);
 
-  return result;
+  const sourceClone = { ...source, team: newSourceTeam };
+  const destinationClone = { ...destination, team: newDestinationTeam };
+
+  return [sourceClone, destinationClone];
 };
-const grid = 8;
 
 
 export const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: "none",
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
 
   // change background colour if dragging
-  background: isDragging ? "lightgreen" : "grey",
+  background: isDragging ? "var(--grey)" : "var(--dark-grey)",
+  cursor: 'grab',
 
   // styles we need to apply on draggables
   ...draggableStyle
 });
 
 
-export const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
-  padding: grid,
-  width: 250
+export const getListStyle = (isDraggingOver, isTeam) => ({
+  // background: isDraggingOver ? "lightblue" : "lightgrey",
+  padding: "10px",
+  border: '2px solid',
+  height: isTeam ? 'auto' : '130px',
+  'borderRadius': 'var(--border-radius-subtle)',
+  'borderColor': isDraggingOver ? 'var(--light-grey)' : 'var(--grey)',
+  width: '250px',
+  'margin-top': '20px'
 });
-
-
-export const dummyList = [{
-  id: 1,
-  name: "Mark Hill",
-  designation: "Chief Executive Officer",
-  team: "",
-  managerId: "",
-  img: '/src/assets/001.png'
-},
-{
-  id: 2,
-  name: "Joe Linux",
-  designation: "Chief Business Officer",
-  team: "Database",
-  managerId: "102",
-  img: '/src/assets/002.png'
-},
-{
-  id: 3,
-  name: "Linda May",
-  designation: "Chief Technology Officer",
-  team: "Branch",
-  managerId: "",
-  img: '/src/assets/003.png'
-}];

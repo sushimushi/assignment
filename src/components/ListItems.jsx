@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 import { getItemStyle } from "../utils/utils";
 
 function ListItems({ data, isDragable, index }) {
-    console.log(data);
+    
     return (
         isDragable ?
             <Draggable draggableId={data.id} key={data.id} index={index}>

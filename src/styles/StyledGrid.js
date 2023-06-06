@@ -5,7 +5,11 @@ const StyledGrid = styled.div`
     grid-template-columns: 300px auto;
     gap: var(--spacing-md);
     & > div{
-        min-height: 70rem;
+        height: 90vh;
+        max-height: 80rem;
+        width: fit-content;
+        max-width: 1000px;
+        overflow: auto;
     }
 `;
 

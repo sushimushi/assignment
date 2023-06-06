@@ -1,13 +1,15 @@
 import ListItems from "./ListItems";
 import { StyledCard, StyledInput } from "../styles";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 
 function List({ data, id }) {
 
   const [list, setList] = useState(data);
   const [filter, setFilter] = useState('');
 
+  useEffect(() => {
+    setList(data);
+  }, [data]);
   return (
     <StyledCard>
       <StyledInput placeholder="Search"

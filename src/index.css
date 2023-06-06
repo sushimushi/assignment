@@ -1,0 +1,105 @@
+body {
+    padding: 10px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.ceoBlock {
+    width: 250px;
+    margin-inline: auto;
+    position: relative;
+}
+
+.ceoBlock::after {
+    content: '';
+    border: 1.3px solid white;
+    height: 20px;
+    position: absolute;
+    right: 50%;
+    bottom: -20px;
+}
+
+
+.managerBlock {
+    position: relative;
+}
+
+.managerBlock::before {
+    content: '';
+    border: 1.3px solid white;
+    width: calc(100% - 250px);
+    position: absolute;
+    right: 50%;
+    top: 0px;
+    transform: translateX(49.8%);
+}
+
+.managerCell {
+    position: relative;
+}
+
+.managerCell::after {
+    content: '';
+    border: 1.3px solid white;
+    height: 20px;
+    position: absolute;
+    right: 50%;
+    bottom: -20px;
+}
+
+.managerCell::before {
+    content: '';
+    border: 1.3px solid white;
+    height: 20px;
+    position: absolute;
+    right: 50%;
+    top: -20px;
+}
+
+.staticListItem:hover {
+    background-color: var(--dark-grey);
+}
+
+html {
+    scrollbar-face-color: #646464;
+    scrollbar-base-color: #646464;
+    scrollbar-3dlight-color: #646464;
+    scrollbar-highlight-color: #646464;
+    scrollbar-track-color: #000;
+    scrollbar-arrow-color: #000;
+    scrollbar-shadow-color: #646464;
+    scrollbar-dark-shadow-color: #646464;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-button {
+    background-color: #666;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #646464;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: #666;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #646464;
+}
+
+::-webkit-resizer {
+    background-color: #666;
+}

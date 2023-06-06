@@ -14,6 +14,7 @@ const StyledListItem = styled.div`
     .listItem__img{
         width: 7rem;
         margin: 1rem;
+        aspect-ratio: 1;
         cursor: pointer;
         box-shadow: 0 1rem 3rem 1rem rgba(0,0,0,0.3);
         img{
@@ -26,11 +27,11 @@ const StyledListItem = styled.div`
         cursor: pointer;
 
         .listItem__name{
-            font-size: var(--fs-xl);
+            font-size: var(--fs-md);
             font-weight: 500;
         }
         .listItem__data{
-            font-size: var(--fs-xs);
+            font-size: var(--fs-xxs);
             color:var(--light-grey);
         }
     }
