@@ -1,8 +1,8 @@
-import ListItems from "./ListItems";
+import { ListItems, FilterComponent } from "./index";
 import { StyledCard, StyledInput } from "../styles";
 import { useState, useEffect } from "react";
 
-function List({ data, id }) {
+function List({ data, id, stateChanger, orignalData }) {
 
   const [list, setList] = useState(data);
   const [filter, setFilter] = useState('');
@@ -10,16 +10,37 @@ function List({ data, id }) {
   useEffect(() => {
     setList(data);
   }, [data]);
+
+  useEffect(() => {
+    let newList = [];
+    if (filter.length) {
+      newList = orignalData.filter(item => {
+        if (!filter) return true;
+        if (item.name.includes(filter) || item.designation.includes(filter) ||
+          item.team.includes(filter) || item.name.toLowerCase().includes(filter) ||
+          item.designation.toLowerCase().includes(filter) || item.team.toLowerCase().includes(filter)) {
+          return true;
+        }
+      });
+    }
+    else {
+      newList = orignalData;
+    }
+
+    setList(newList);
+    stateChanger(newList);
+  }, [filter]);
+
   return (
     <StyledCard className="overflow-auto">
-      <StyledInput placeholder="Search"
-        type="text"
-        value={filter}
-        onChange={e => setFilter(e.target.value)} />
-      {/* {
-        list.filter(f => f.includes(filter) || filter === '')
-          .map(f => <li key={f}>{f}</li>)
-      } */}
+      <div>
+        <StyledInput placeholder="Search"
+          type="text"
+          value={filter}
+          onChange={e => setFilter(e.target.value)}
+        />
+        {/* <FilterComponent data={}/> */}
+      </div>
       {list.filter(item => {
         if (!filter) return true;
         if (item.name.includes(filter) || item.designation.includes(filter) ||

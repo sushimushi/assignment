@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import List from "./List";
 import ListItems from "./ListItems";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { getItemStyle, getListStyle, move, reorder } from "../utils/utils";
+import { getListStyle, move, reorder, moveManager } from "../utils/utils";
 
 function TreeComponent({ data }) {
   const [state, setState] = useState([]);
@@ -21,7 +21,7 @@ function TreeComponent({ data }) {
     managers = managers.map(manager => {
       return {
         ...manager,
-        team: data.filter(employee => employee.managerId === manager.id)
+        teamMember: data.filter(employee => employee.managerId === manager.id)
       };
     });
 
@@ -30,7 +30,6 @@ function TreeComponent({ data }) {
 
   function onDragEnd(result) {
     const { source, destination } = result;
-    // console.log(result);
 
     // dropped outside the list
     if (!destination) {
@@ -39,21 +38,24 @@ function TreeComponent({ data }) {
     const sInd = +source.droppableId;
     const dInd = +destination.droppableId;
 
-    // state[sInd].team[source.index].managerId = state[dInd].id;
+    console.log(sInd, dInd);
 
     if (sInd === dInd) {
-      const items = reorder(state[sInd].team, source.index, destination.index);
+      const items = reorder(state[sInd].teamMember, source.index, destination.index);
       console.log(items);
       const newState = [...state];
-      newState[sInd].team = items;
-      setState(newState);
+      newState[sInd].teamMember = items;
+    } else if (sInd > 100 || dInd > 100) {
+      console.log({ state });
+      const result = moveManager(state, source, destination);
+      console.log({ result });
+      setState(result);
     } else {
+      console.log('employee');
       const result = move(state[sInd], state[dInd], source.index, destination.index);
-      // console.log(state);
       const newState = [...state];
       newState[sInd] = result[0];
       newState[dInd] = result[1];
-
       setState(newState);
     }
   }
@@ -72,12 +74,19 @@ function TreeComponent({ data }) {
             {state.map((el, ind) => (
               <div key={ind} style={{ 'padding-top': '20px', height: 'auto', overflow: 'visible' }}>
                 <div className="managerCell">
-                  <ListItems data={el} isDragable={false} />
+                  <Droppable droppableId={`${el.id + 100}`}>
+                    {(provided, snapshot) => (
+                      <div ref={provided.innerRef}{...provided.droppableProps}>
+                        <ListItems data={el} isDragable={true} index={el.id} />
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
                 </div>
                 <Droppable droppableId={`${ind}`}>
                   {(provided, snapshot) => (
-                    <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver, el.team.length)}{...provided.droppableProps}>
-                      {el.team.map((item, index) => (
+                    <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver, el.teamMember.length)}{...provided.droppableProps}>
+                      {el.teamMember.map((item, index) => (
                         <ListItems className="team__members" data={item} isDragable={true} key={item.id} index={index} />
                       ))}
                       {provided.placeholder}

@@ -10,12 +10,16 @@ function Home() {
 
   const [loading, setLoading] = useState(false);
   const [employees, setEmployees] = useState([]);
+  const [originalList, setOrignalList] = useState([]);
 
   useEffect(() => {
     setLoading(false);
     fetch('/api/employees')
       .then(res => res.json())
-      .then(data => setEmployees(data.employees))
+      .then(data => {
+        setEmployees(data.employees);
+        setOrignalList(data.employees);
+      })
       .then(() => setLoading(false))
       .catch(err => console.error(err));
   }, []);
@@ -24,7 +28,7 @@ function Home() {
     <>
       {loading ? <Loader /> :
         <StyledGrid>
-          <List data={employees} />
+          <List data={employees} stateChanger={setEmployees} orignalData={originalList} />
           <TreeComponent data={employees} id={2} />
         </StyledGrid>
       }

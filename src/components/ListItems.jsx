@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 import { getItemStyle } from "../utils/utils";
 
 function ListItems({ data, isDragable, index }) {
-    
+
     return (
         isDragable ?
             <Draggable draggableId={data.id} key={data.id} index={index}>
@@ -20,6 +20,9 @@ function ListItems({ data, isDragable, index }) {
                             </p>
                             <p className="listItem__data">
                                 {data.designation}
+                            </p>
+                            <p className="listItem__data">
+                                {data.team}
                             </p>
                         </div>
                     </StyledListItem>

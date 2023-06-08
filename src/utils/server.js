@@ -23,22 +23,22 @@ const list = [{
     designation: "Chief Business Officer",
     team: "Database",
     managerId: '1',
-    img: '/assets/002.png'
+    img: '/assets/003.png'
 },
 
 {
     id: '3',
     name: "Linda May",
     designation: "Chief Technology Officer",
-    team: "Branch",
+    team: "Development",
     managerId: '1',
-    img: '/assets/003.png'
+    img: '/assets/002.png'
 },
 {
     id: '4',
     name: "Jhon Green",
     designation: "Chief Business Officer",
-    team: "Database",
+    team: "Marketing",
     managerId: '1',
     img: '/assets/004.png'
 },
@@ -62,7 +62,7 @@ const list = [{
     id: '7',
     name: "Alice Lopez",
     designation: "Chief Business Officer",
-    team: "Database",
+    team: "Development",
     managerId: '3',
     img: '/assets/006.png'
 },
@@ -70,7 +70,7 @@ const list = [{
     id: '8',
     name: "Mary Jhonson",
     designation: "Chief Business Officer",
-    team: "Database",
+    team: "Development",
     managerId: '3',
     img: '/assets/009.png'
 },
@@ -78,7 +78,7 @@ const list = [{
     id: '9',
     name: "Kirk Douglas",
     designation: "Chief Business Development Officer",
-    team: "Database",
+    team: "Development",
     managerId: '3',
     img: '/assets/010.png'
 },
@@ -86,7 +86,7 @@ const list = [{
     id: '10',
     name: "Erica Reel",
     designation: "Chief Customer Officer",
-    team: "Database",
+    team: "Marketing",
     managerId: '4',
     img: '/assets/007.png'
 }];

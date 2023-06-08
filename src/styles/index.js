@@ -6,3 +6,4 @@ export { default as StyledListItem } from './StyledListItem';
 export { default as StyledInput } from './StyledInput';
 export { default as StyledButton } from './StyledButton';
 export { default as Loader } from './Loader';
+export { default as FilterButton } from './FilterButton';
