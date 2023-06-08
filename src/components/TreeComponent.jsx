@@ -70,7 +70,7 @@ function TreeComponent({ data }) {
           {ceo && <ListItems data={ceo} isDragable={false} />}
         </div>
         <DragDropContext onDragEnd={onDragEnd}>
-          <StyledGrid style={{ display: "flex" }} className="managerBlock">
+            <StyledGrid style={{ display: "flex" }} className="managerBlock">
             {state.map((el, ind) => (
               <div key={ind} style={{ 'padding-top': '20px', height: 'auto', overflow: 'visible' }}>
                 <div className="managerCell">
